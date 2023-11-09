@@ -1,17 +1,18 @@
 version: "3"
 services:
   app: &app
+    container_name: app
+    tty: true
     build:
       context: .
       dockerfile: ./Dockerfile
-    tty: true
-    ports:
-      - "5000:5000"
-    container_name: app
+      target: PYTHON
     volumes:
       - type: bind
         source: app
         target: /work/app
+    ports:
+      - "5000:5000"
     env_file:
       - .env
     depends_on:
@@ -20,6 +21,8 @@ services:
   tailwind:
     container_name: tailwind
     <<: *app
+    build:
+      target: TAILWIND
     command: npm run build-css
     ports: []
   db:
