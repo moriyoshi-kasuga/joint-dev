@@ -5,7 +5,7 @@
 - 起動
   - `docker compose up`
 - 停止
-  - `docker compse down`
+  - `docker compose down`
 - ログの見方
   - `docker compose logs app` (`app` の部分を `db` に変えることで database のログを見れます)<br>
   - `docker compose logs app -f` とすることで、ログをずっと表示して置けるので、こっちを推奨
