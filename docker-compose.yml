@@ -9,8 +9,10 @@ services:
       - "5000:5000"
     container_name: app
     volumes:
-      - .:/app
-    command: flask run --host=0.0.0.0 --debug --port 5000
+      - ./app:/app
+    command: python3 app.py
+    env_file:
+      - .env
     depends_on:
       - db
   db:
