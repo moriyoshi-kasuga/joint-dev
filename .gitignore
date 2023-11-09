@@ -171,4 +171,4 @@ cython_debug/
 
 .envrc
 .DS_Store
-
+app/static/tailwind/output.css
