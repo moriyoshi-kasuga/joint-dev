@@ -1,6 +1,12 @@
-FROM python:3.11.5
+FROM nikolaik/python-nodejs:python3.11-nodejs20
 
-WORKDIR /app
+WORKDIR /work
+
+COPY package*.json .
+COPY tailwind.config.js .
+RUN npm install
+
+WORKDIR /work/app
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

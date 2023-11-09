@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Article Site</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-  </head>
-  <body>
-    <h1 class="test">Article Site</h1> 
-  </body>
+
+<head>
+  <title>Article Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='tailwind/output.css') }}" rel="stylesheet">
+</head>
+
+<body>
+  <h1 class="test">Article Site</h1>
+  <p class="text-red-900">Hello world</p>
+  <p class="text-green-900">Hello world</p>
+  <p class="text-blue-900">Hello world</p>
+</body>
+
 </html>
