@@ -2,8 +2,10 @@
 
 > このプロジェクトで使う,Docker の説明をしています。
 
+- 更新が来たとき
+  - `docker compose up -d --build`
 - 起動
-  - `docker compose up`
+  - `docker compose up -d`
 - 停止
   - `docker compose down`
 - ログの見方
