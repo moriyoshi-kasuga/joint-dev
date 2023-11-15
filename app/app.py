@@ -4,6 +4,11 @@ from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
+from route.create import add_create_route
+from route.thread import thread_route
+from route.login import login_route
+from route.signup import signup_route
+
 app = Flask(__name__)
 app.config[
     "SQLALCHEMY_DATABASE_URI"
@@ -17,6 +22,10 @@ app.config[
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+add_create_route(app)
+thread_route(app)
+login_route(app)
+signup_route(app)
 
 class students(db.Model):
     id = db.Column("student_id", db.Integer, primary_key=True)
@@ -33,7 +42,6 @@ class students(db.Model):
 @app.route("/", methods=["GET", "POST"])
 def home():
     return render_template("index.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")

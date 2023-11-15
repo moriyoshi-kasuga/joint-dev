@@ -10,11 +10,24 @@
 </head>
 
 <body>
-  <p class="text-red-500">Hello world</p>
-  <p class="text-green-500">Hello world</p>
-  <p class="text-blue-500">Hello world</p>
-  <p class="text-yellow-500">Hello world</p>
-  <p class="text-pink-500">Hello world</p>
+  <h1 class="text-red-700 text-3xl">ホーム</h1>
+
+  <div class="my-10">
+    <a href="{{ url_for('create') }}" class="bg-blue-500 hover:bg-blue-700
+    text-white font-bold py-2 px-4 rounded">掲示板を作る</a><br>
+  </div>
+
+  <div>
+    <a href="{{ url_for('thread') }}" class="underline">スレッドタイトル</a>
+  </div>
+
+  <div>
+    <a href="{{ url_for('login') }}">ログイン</a>
+  </div>
+
+  <div>
+    <a href="{{ url_for('signup') }}">サインアップ</a>
+  </div>
 </body>
 
 </html>
