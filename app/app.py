@@ -4,12 +4,11 @@ from uuid import uuid4
 from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects.postgresql import UUID
-
 from route.create import add_create_route
-from route.thread import thread_route
 from route.login import login_route
 from route.signup import signup_route
+from route.thread import thread_route
+from sqlalchemy.dialects.postgresql import UUID
 
 app = Flask(__name__)
 app.config[
@@ -28,6 +27,7 @@ add_create_route(app)
 thread_route(app)
 login_route(app)
 signup_route(app)
+
 
 class User(db.Model):
     __tablename__ = "users"
@@ -77,8 +77,6 @@ class Comment(db.Model):
     user_id = db.Column(UUID(as_uuid=True), db.ForeignKey("users.id"))
     thread_id = db.Column(UUID(as_uuid=True), db.ForeignKey("threads.id"))
 
-    number = db.Column(db.Integer, nullable=False)
-
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
 
@@ -86,9 +84,11 @@ class Comment(db.Model):
 def index():
     return render_template("index.html")
 
+
 @app.route("/home")
 def home():
     return render_template("index.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
