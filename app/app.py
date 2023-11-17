@@ -23,10 +23,10 @@ app.config[
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-add_create_route(app)
-thread_route(app)
-login_route(app)
-signup_route(app)
+add_create_route(app, db)
+thread_route(app, db)
+login_route(app, db)
+signup_route(app, db)
 
 
 class User(db.Model):
