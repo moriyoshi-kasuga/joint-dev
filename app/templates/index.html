@@ -10,23 +10,23 @@
 </head>
 
 <body>
-  <a href="{{ url_for('index') }}" class="text-blue-500">ホーム</a>
+  <a href="{{ url_for('main.index') }}" class="text-blue-500">ホーム</a>
 
   <div class="my-10">
-    <a href="{{ url_for('create') }}" class="bg-blue-500 hover:bg-blue-700
+    <a href="{{ url_for('main.create') }}" class="bg-blue-500 hover:bg-blue-700
     text-white font-bold py-2 px-4 rounded">掲示板を作る</a><br>
   </div>
 
   <div>
-    <a href="{{ url_for('thread') }}" class="underline">スレッドタイトル</a>
+    <a href="{{ url_for('main.thread') }}" class="underline">スレッドタイトル</a>
   </div>
 
   <div>
-    <a href="{{ url_for('login') }}">ログイン</a>
+    <a href="{{ url_for('main.login') }}">ログイン</a>
   </div>
 
   <div>
-    <a href="{{ url_for('signup') }}">サインアップ</a>
+    <a href="{{ url_for('main.signup') }}">サインアップ</a>
   </div>
 </body>
 
