@@ -9,6 +9,31 @@
     <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <p>サインアップ</p>
+<body class="bg-gray-200 flex items-center justify-center h-screen">
+    <div class="container mx-auto max-w-md bg-white p-6">
+        <p class="text-2xl font-bold mb-5">サインアップ</p>
+
+        <form method="POST" class="space-y-3">
+            <div>
+                <label for="" class="block text-sm font-midium text-gray-700">ユーザー名</label>
+                <input type="text" name="username" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700" for="">メールアドレス</label>
+                <input type="email" name="email" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md" required>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700" for="">パスワード</label>
+                <input type="password" name="password" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md" required>
+            </div>
+
+            <div>
+                <button type="submit" class="w-full py-2 px-4 border border-transparentrounded-md
+                shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">サインアップ</button>
+            </div>
+        </form>
+    </div>
 </body>
+</html>
