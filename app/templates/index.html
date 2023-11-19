@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Article Site</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
-</head>
+	<head>
+		<title>Article Site</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+		<link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+	</head>
 
-<body>
-  <a href="{{ url_for('main.index') }}" class="text-blue-500">ホーム</a>
-
-  <div class="my-10">
-    <a href="{{ url_for('main.create') }}" class="bg-blue-500 hover:bg-blue-700
-    text-white font-bold py-2 px-4 rounded">掲示板を作る</a><br>
-  </div>
-
-  <div>
-    <a href="{{ url_for('main.thread') }}" class="underline">スレッドタイトル</a>
-  </div>
-
-  <div>
-    <a href="{{ url_for('main.login') }}">ログイン</a>
-  </div>
-
-  <div>
-    <a href="{{ url_for('main.signup') }}">サインアップ</a>
-  </div>
-</body>
+	<body>
+		<a href="{{ url_for('main.index') }}" class="text-blue-500">ホーム</a>
+		<div class="my-10">
+			<a href="{{ url_for('main.create') }}" class="bg-blue-500 hover:bg-blue-700
+  text-white font-bold py-2 px-4 rounded">掲示板を作る</a><br>
+		</div>
+		<div>
+			<a href="{{ url_for('main.thread') }}" class="underline">スレッドタイトル</a>
+		</div>
+		<div>
+			<a href="{{ url_for('main.login') }}">ログイン</a>
+		</div>
+		<div>
+			<a href="{{ url_for('main.signup') }}">サインアップ</a>
+		</div>
+	</body>
 
 </html>
