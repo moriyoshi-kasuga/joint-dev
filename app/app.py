@@ -10,7 +10,7 @@ app.config[
     user=os.environ.get("POSTGRES_USER"),
     passwd=os.environ.get("POSTGRES_PASSWORD"),
     host=os.environ.get("POSTGRES_HOST"),
-    port=os.environ.get("POSTGRES_PORT"),
+    port=int(os.environ.get("POSTGRES_PORT", 5432)),
     db=os.environ.get("POSTGRES_DB"),
 )
 from models import db  # noqa: E402
