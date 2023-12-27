@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from flask_migrate import Migrate
+from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config[
@@ -13,7 +14,18 @@ app.config[
     port=int(os.environ.get("POSTGRES_PORT", 5432)),
     db=os.environ.get("POSTGRES_DB"),
 )
+
 from models import db  # noqa: E402
+from models import User  # noqa: E402
+
+login = LoginManager(app)
+login.login_view = "login"
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(id)
+
 
 db.init_app(app)
 migrate = Migrate(app, db)
