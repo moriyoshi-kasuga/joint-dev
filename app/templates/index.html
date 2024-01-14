@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Article Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-gray-100 font-sans h-full">
+      <nav class="bg-gradient-to-r from-blue-500 to-blue-700 p-4 fixed w-full top-0">
+        <div class="container mx-auto flex items-center justify-between">
+          <div class="flex items-left space-x-4">
+            <!-- ハンバーガーメニュー -->
+            <div id="menuIcon" class="text-white cursor-pointer">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </div>
+            <a href="{{ url_for('main.index') }}" class="text-white text-2xl font-bold">ホーム</a>
+          </div>
+
+
+          <div class="flex items-center space-x-4">
+
+            <div class="hidden md:flex items-center space-x-4">
+              <a href="{{ url_for('main.create') }}"
+                class="bg-white text-blue-500 hover:text-blue-700 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">掲示板を作る</a>
+              <div class="flex items-center space-x-4">
+                <a href="{{ url_for('main.login') }}" class="text-white hover:underline">ログイン</a>
+                <a href="{{ url_for('main.signup') }}" class="text-white hover:underline">サインアップ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container mx-auto mt-8 p-8 bg-white shadow-md rounded-md mt-28">
+      <h1 class="text-3xl font-bold mb-4">最新のスレッド</h1>
+
+      <!-- スレッドのサムネイル -->
+      <div class="flex flex-wrap -mx-4">
+
+        <!-- sample 1 -->
+        <div class="max-w-sm rounded overflow-hidden shadow-lg mb-4 mx-4 px-4">
+          <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300" alt="Thread Image">
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">スレッドのタイトル</div>
+            <p class="text-gray-700 text-base">スレッドの説明や内容がここに入ります。</p>
+          </div>
+          <div class="px-6 py-4">
+            <span
+              class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#カテゴリ</span>
+            <span
+              class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#トピック</span>
+          </div>
+        </div>
+
+        <!-- sample 2 -->
+        <div class="max-w-sm rounded overflow-hidden shadow-lg mb-4 mx-4 px-4">
+          <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300" alt="Thread Image">
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">スレッドのタイトル</div>
+            <p class="text-gray-700 text-base">スレッドの説明や内容がここに入ります。</p>
+          </div>
+          <div class="px-6 py-4">
+            <span
+              class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#カテゴリ</span>
+            <span
+              class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#トピック</span>
+          </div>
+        </div>
+
+        <!-- sample 3 -->
+        <div class="max-w-sm rounded overflow-hidden shadow-lg mb-4 mx-4 px-4">
+          <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300" alt="Thread Image">
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">スレッドのタイトル</div>
+            <p class="text-gray-700 text-base">スレッドの説明や内容がここに入ります。</p>
+          </div>
+          <div class="px-6 py-4">
+            <span
+              class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#カテゴリ</span>
+            <span
+              class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#トピック</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- JSのファイル分け分かりませんでした -->
+    <script>
+      const menuIcon = document.getElementById('menuIcon');
+      const navLinks = document.querySelector('.hidden');
+
+      menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+
+</html>
