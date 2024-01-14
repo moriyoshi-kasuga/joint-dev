@@ -18,24 +18,59 @@
        href="{{ url_for('static', file_name='images/favicon.ico') }}" /> #}
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/output.css') }}" />
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}" />
     {% block css %}{% endblock %}
   </head>
   <body>
-    <header>
-    </header>
-    <div class="container">
+    {% block header %}
+      <header class="bg-gradient-to-r from-blue-500 to-blue-700 p-4 fixed w-full top-0">
+        <div class="container mx-auto flex items-center justify-between">
+          <div class="flex items-left space-x-4">
+            <!-- ハンバーガーメニュー -->
+            <div id="menuIcon" class="text-white cursor-pointer">
+              <svg class="h-6 w-6"
+                   fill="none"
+                   stroke="currentColor"
+                   viewBox="0 0 24 24"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </div>
+            <a href='{{ url_for("main.index") }}'
+               class="text-white text-2xl font-bold">ホーム</a>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div id="navLinks" class="hidden md:flex items-center space-x-4">
+              <a href='{{ url_for("main.create") }}'
+                 class="bg-white text-blue-500 hover:text-blue-700 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">掲示板を作る</a>
+              <div class="flex items-center space-x-4">
+                <a href='{{ url_for("main.login") }}' class="text-white hover:underline">ログイン</a>
+                <a href='{{ url_for("main.register") }}'
+                   class="text-white hover:underline">サインアップ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <script>
+      const menuIcon = document.getElementById('menuIcon');
+      const navLinks = document.getElementById('navLinks');
+
+      menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('hidden');
+      });
+      </script>
+      {% endblock header %}
       {% block content %}
         <p>Default content...</p>
       {% endblock content %}
-    </div>
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">Footer...</span>
-      </div>
-    </footer>
-    {% block javascript %}
-    {% endblock javascript %}
-  </body>
-</html>
+      {% block footer %}
+        <footer class="footer">
+          <div class="container">
+            <span class="text-muted">Footer...</span>
+          </div>
+        </footer>
+      {% endblock footer %}
+      {% block javascript %}
+      {% endblock javascript %}
+    </body>
+  </html>
