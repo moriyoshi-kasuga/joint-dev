@@ -3,11 +3,10 @@ from models import User, db
 
 from . import main
 
-
-@main.route("/signup", methods=["POST", "GET"])
-def signup():
+@main.route("/register", methods=["POST", "GET"])
+def register():
     if request.method == "GET":
-        return render_template("signup.html")
+        return render_template("register.html")
 
     name = request.form.get("name")
     email = request.form.get("email")
@@ -17,4 +16,4 @@ def signup():
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify({"message": "User created successfully"}), 201
+    return render_template("register.html")
