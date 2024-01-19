@@ -1,7 +1,118 @@
 {% extends '_base.html' %}
 {% block title %}
-  投稿ページ
+    記事作成 - joint-dev
 {% endblock title %}
 {% block content %}
-  <h1>投稿ページ</h1>
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-semibold mb-4 text-center text-gray-800">記事作成</h2>
+            <form>
+                <div class="mb-4">
+                    <label for="title" class="block text-sm font-medium text-gray-600">タイトル</label>
+                    <input type="text"
+                           id="title"
+                           name="title"
+                           class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="category" class="block text-sm font-medium text-gray-600">カテゴリ</label>
+                    <select id="category"
+                            name="category"
+                            class="mt-1 p-2 w-full border rounded-md">
+                        <option value="general">General / 一般</option>
+                        <option value="news">News / ニュース</option>
+                        <option value="technology">Technology / テクノロジー</option>
+                        <option value="entertainment">Entertainment / エンターテインメント</option>
+                        <option value="sports">Sports / スポーツ</option>
+                        <option value="health_medical">Health & Medical / 健康・医療</option>
+                        <option value="fashion_beauty">Fashion & Beauty / ファッション・美容</option>
+                        <option value="hobbies_art">Hobbies & Art / 趣味・アート</option>
+                        <option value="education">Education / 学問・教育</option>
+                        <option value="food_cooking">Food & Cooking / 食品・料理</option>
+                        <option value="business_economy">Business & Economy / ビジネス・経済</option>
+                        <option value="science_research">Science & Research / 科学・研究</option>
+                        <option value="local_information">Local Information / 地域情報</option>
+                        <option value="reviews_ratings">Reviews & Ratings / レビュー・評価</option>
+                        <option value="questions_advice">Questions & Advice / 質問・相談</option>
+                        <option value="events_activities">Events & Activities / イベント・アクティビティ</option>
+                        <option value="photos_illustrations">Photos & Illustrations / 写真・イラスト</option>
+                        <option value="music_movies_literature">Music, Movies & Literature / 音楽・映画・文学</option>
+                        <option value="cars_bikes">Cars & Bikes / 車・バイク</option>
+                        <option value="pets_animals">Pets & Animals / ペット・動物</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="content" class="block text-sm font-medium text-gray-600">本文</label>
+                    <textarea id="content"
+                              name="content"
+                              rows="6"
+                              class="mt-1 p-2 w-full border rounded-md"></textarea>
+                </div>
+                <div class="mb-4 flex items-center justify-between">
+                    <label for="image" class="block text-sm font-medium text-gray-600">画像アップロード</label>
+                    <input type="file"
+                           id="image"
+                           name="image"
+                           accept="image/*"
+                           class="hidden"
+                           multiple
+                           onchange="previewImages(this)">
+                    <label for="image" class="cursor-pointer text-blue-500 hover:underline">
+                        <svg class="w-6 h-6"
+                             fill="none"
+                             stroke="currentColor"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejun="round" stroke-width="2" d="M12 5v14m0-14s4-4 8-4m-4 4H4"></path>
+                        </svg>
+                        画像を選択
+                    </label>
+                </div>
+                <div id="imagePreview" class="hidden">
+                    <div id="imageContainer" class="flex flex-wrap gap-2"></div>
+                </div>
+                <button type="submit"
+                        class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200">
+                    投稿する
+                </button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function previewImages(input) {
+            const imageContainer = document.getElementById('imageContainer');
+            const imagePreview = document.getElementById('imagePreview');
+
+
+            if (input.files && input.files.length > 0) {
+                imagePreview.classList.remove('hidden');
+
+                for (let i = 0; i < input.files.length; i++) {
+                    const reader = new FileReader();
+                    const imgElement = document.createElement('div');
+                    imgElement.className = 'relative w-1/2 h-auto rounded-md';  // 画像の横幅を半分に設定
+
+                    const img = document.createElement('img');
+                    img.className = 'w-full h-full rounded-md';
+                    reader.onload = function (e) {
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(input.files[i]);
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'absolute top-0 right-0 p-1 bg-red-500 text-white rounded-full';
+                    deleteButton.innerHTML = '&times;';
+                    deleteButton.addEventListener('click', function () {
+                        imgElement.remove();
+                    });
+
+                    imgElement.appendChild(img);
+                    imgElement.appendChild(deleteButton);
+                    imageContainer.appendChild(imgElement);
+                }
+            } else {
+                imagePreview.classList.add('hidden');
+            }
+        }
+    </script>
 {% endblock content %}
