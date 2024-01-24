@@ -48,6 +48,15 @@
                               rows="6"
                               class="mt-1 p-2 w-full border rounded-md"></textarea>
                 </div>
+                <div class="mb-4">
+                    <label for="tags" class="block text-sm font-medium text-gray-600">タグ（カンマ区切り）</label>
+                    <input type="text"
+                           id="tags"
+                           name="tags"
+                           class="mt-1 p-2 w-full border rounded-md"
+                           oninput="processTags(this)">
+                </div>
+                <div id="tagsContainer" class="flex flex-wrap gap-2"></div>
                 <div class="mb-4 flex items-center justify-between">
                     <label for="image" class="block text-sm font-medium text-gray-600">画像アップロード</label>
                     <input type="file"
@@ -57,16 +66,7 @@
                            class="hidden"
                            multiple
                            onchange="previewImages(this)">
-                    <label for="image" class="cursor-pointer text-blue-500 hover:underline">
-                        <svg class="w-6 h-6"
-                             fill="none"
-                             stroke="currentColor"
-                             viewBox="0 0 24 24"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejun="round" stroke-width="2" d="M12 5v14m0-14s4-4 8-4m-4 4H4"></path>
-                        </svg>
-                        画像を選択
-                    </label>
+                    <label for="image" class="cursor-pointer text-blue-500 hover:underline">画像を選択</label>
                 </div>
                 <div id="imagePreview" class="hidden">
                     <div id="imageContainer" class="flex flex-wrap gap-2"></div>
@@ -82,7 +82,6 @@
         function previewImages(input) {
             const imageContainer = document.getElementById('imageContainer');
             const imagePreview = document.getElementById('imagePreview');
-
 
             if (input.files && input.files.length > 0) {
                 imagePreview.classList.remove('hidden');
@@ -112,6 +111,30 @@
                 }
             } else {
                 imagePreview.classList.add('hidden');
+            }
+        }
+
+        function processTags(input) {
+            const tagsContainer = document.getElementById('tagsContainer');
+
+            tagsContainer.innerHTML = '';  // タグコンテナをクリア
+
+            if (input.value.trim() !== '') {
+                const tags = input.value.split(',');  // カンマで区切ってタグを取得
+
+                for (let i = 0; i < tags.length; i++) {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'inline-flex items-center bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold mr-2 mb-2';
+                    tagElement.innerHTML = `
+                        <span>${tags[i].trim()}</span>
+                        <button type="button" class="ml-2 focus:outline-none">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    `;
+                    tagsContainer.appendChild(tagElement);
+                }
             }
         }
     </script>
